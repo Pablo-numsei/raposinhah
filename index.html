@@ -79,7 +79,7 @@ header {
 </style></head><body><header>
     <h1>💜 6 Meses 💜</h1>
     <p>Uma história incrível e perfeita do nosso jeito</p>
-</header><div class="card" onclick="openModal('m1')">Clique aqui 💭</div>
+</header><div class="card" onclick="openModal('m4')">🍓 Moranguinho</div><div class="card" onclick="openModal('m1')">Clique aqui 💭</div>
 <div class="card" onclick="openModal('m2')">Mais um segredo 💜</div>
 <div class="card" onclick="openModal('m3')">Última mensagem...</div><!-- Modais --><div id="m1" class="modal">
   <div class="modal-content">
@@ -106,13 +106,50 @@ header {
         E eu escolheria você em todas as versões da vida.
     </p>
   </div>
-</div><script>
+</div><div id="m4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m4')">✖</span>
+    <p>
+        Eu te amo mais q tudo nesse mundo... obrigaduh por fazer partih da minha vidah...
+        eu sou gratuh por tuduh o quih vuceh já fez por mim e ainda vamos fazeh muituh mais coisas juntuhs...
+        eu tih prometuh 💋💋
+    </p>
+  </div>
+</div><style>
+.burst {
+    position: fixed;
+    pointer-events: none;
+    animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+</style><script>
 function openModal(id) {
     document.getElementById(id).style.display = "flex";
+
+    if(id === 'm4') {
+        createBurst();
+    }
 }
 
 function closeModal(id) {
     document.getElementById(id).style.display = "none";
+}
+
+function createBurst() {
+    for (let i = 0; i < 15; i++) {
+        const el = document.createElement("div");
+        el.classList.add("burst");
+        el.innerHTML = "💜";
+        el.style.left = (window.innerWidth/2 + (Math.random()*200 - 100)) + "px";
+        el.style.top = (window.innerHeight/2 + (Math.random()*200 - 100)) + "px";
+        el.style.fontSize = (Math.random()*20 + 15) + "px";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1000);
+    }
 }
 
 setInterval(() => {
